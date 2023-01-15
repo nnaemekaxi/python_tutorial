@@ -2,7 +2,9 @@ from tkinter import *
 from tkinter.ttk import *
 import datetime
 import time
-from pygame import mixer
+# from pygame import mixer
+import winsound
+# from playsound import playsound
 from threading import *
 
 
@@ -75,18 +77,18 @@ def Threading():
     t1=Thread(target=alarm)
     t1.start()
     
-def Stop_threading():
-    mixer.music.stop
+# def Stop_threading():
+#     mixer.music.stop
      
 set_alarm = Button(frame_body, text="SET ALARM", command=Threading)
 set_alarm.place(x=140, y=120)
 
-stop_alarm = Button(frame_body, text="STOP ALARM", command=Stop_threading)
-stop_alarm.place(x=135, y=160)
+# stop_alarm = Button(frame_body, text="STOP ALARM", command=Stop_threading)
+# stop_alarm.place(x=135, y=160)
  
-def sound_alarm():
-    mixer.music.load("bless.mp3")
-    mixer.music.play
+# def sound_alarm():
+#     mixer.music.load("bless.mp3")
+#     mixer.music.play
     
     
 def alarm():
@@ -99,8 +101,9 @@ def alarm():
         print(current_time,set_alarm_time)
  
         if current_time == set_alarm_time:
-            mixer.init()
-            sound_alarm()
- 
+            winsound.PlaySound("sound.wav",winsound.SND_ASYNC)
+            # playsound("bless.mp3")
+            # mixer.init()
+            # sound_alarm()
 
 window.mainloop()
